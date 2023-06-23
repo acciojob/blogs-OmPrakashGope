@@ -2,6 +2,7 @@ package com.driver.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,7 @@ public class Blog{
     private int id;
     private String title;
     private String content;
+    private Date pubDate;
     @ManyToOne
     @JoinColumn
     private User user;
@@ -24,6 +26,14 @@ public class Blog{
     public Blog(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 
     public int getId() {
