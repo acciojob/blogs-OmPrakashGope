@@ -14,6 +14,9 @@ public class Image{
     @JoinColumn
     private Blog blog;
 
+    public Image() {
+    }
+
     public Image(String description, String dimensions) {
         this.description = description;
         this.dimensions = dimensions;

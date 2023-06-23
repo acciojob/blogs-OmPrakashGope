@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class User{
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String userName;
@@ -16,6 +16,9 @@ public class User{
     private String lastName;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Blog> blogList = new ArrayList<>();
+
+    public User() {
+    }
 
     public User(String username, String password) {
         this.userName = username;
