@@ -26,7 +26,7 @@ public class BlogService {
         //create a blog at the current time
         Blog blog = new Blog(title,content);
         Optional<User> userOptional = userRepository1.findById(userId);
-        if(userOptional.isEmpty())
+        if(!userOptional.isPresent())
         {
             blogRepository1.save(blog);
             return blog;
