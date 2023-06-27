@@ -26,15 +26,16 @@ public class ImageService {
     }
 
     public void deleteImage(Integer id){
-        Image image = imageRepository2.findById(id).get();
-        imageRepository2.delete(image);
+       imageRepository2.deleteById(id);
     }
 
     public int countImagesInScreen(Integer id, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
         Image image = imageRepository2.findById(id).get();
-        int imageDimensions = Integer.parseInt(image.getDimensions());
-        int screenSize = Integer.parseInt(screenDimensions);
-        return screenSize/imageDimensions;
+        String[] screen = screenDimensions.split("X");
+        int screenArea = Integer.parseInt(screen[0])*Integer.parseInt(screen[1]);
+        String[] imageDimensions = image.getDimensions().split("X");
+        int imageArea = Integer.parseInt(imageDimensions[0])*Integer.parseInt(imageDimensions[1]);
+        return screenArea/imageArea;
     }
 }
